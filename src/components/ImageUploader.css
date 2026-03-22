@@ -1,0 +1,165 @@
+.image-uploader {
+  width: 100%;
+}
+
+.uploader-zone {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.uploader-zone.disabled {
+  cursor: not-allowed;
+  background: #f5f5f5;
+  border-color: #e4e4e4;
+}
+
+.uploader-zone:hover {
+  border-color: #667eea;
+  background: #f5f7ff;
+}
+
+.uploader-zone.disabled:hover {
+  border-color: #e4e4e4;
+  background: #f5f5f5;
+}
+
+.uploader-zone.drag-over {
+  border-color: #667eea;
+  background: #f0f4ff;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.uploader-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #666;
+}
+
+.uploader-placeholder svg {
+  color: #ddd;
+}
+
+.uploader-placeholder p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.uploader-placeholder small {
+  display: block;
+  color: #999;
+  font-size: 13px;
+}
+
+.uploader-preview {
+  position: relative;
+  display: inline-block;
+}
+
+.uploader-preview img {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 6px;
+}
+
+.uploader-remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.uploader-remove-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.uploader-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e0e0e0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.uploader-loading p {
+  color: #666;
+  font-weight: 500;
+}
+
+.uploader-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #10b981;
+}
+
+.uploader-success p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.uploader-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #ef4444;
+  padding: 12px;
+}
+
+.uploader-error svg {
+  color: #ef4444;
+}
+
+.uploader-error p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.uploader-error small {
+  display: block;
+  color: #999;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .uploader-zone {
+    padding: 24px 12px;
+  }
+
+  .uploader-preview img {
+    max-width: 100%;
+    max-height: 200px;
+  }
+}

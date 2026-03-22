@@ -1,0 +1,353 @@
+.manage-contacts {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+  padding: 2.5rem;
+}
+
+.page-header {
+  max-width: 1400px;
+  margin: 0 auto 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.page-header h1 {
+  flex: 1;
+  background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  color: #1a237e;
+  border: 2px solid #1a237e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+  background: #1a237e;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(26, 35, 126, 0.25);
+}
+
+.contacts-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.loading,
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 12px;
+  color: #666;
+}
+
+.empty-state svg {
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.message-item {
+  background: white;
+  border-radius: 16px;
+  padding: 1.75rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.message-item:hover {
+  border-color: #3949ab;
+  box-shadow: 0 6px 20px rgba(26, 35, 126, 0.15);
+  transform: translateY(-2px);
+}
+
+.message-item.selected {
+  border-color: #1a237e;
+  background: linear-gradient(135deg, #f5f5ff 0%, #ffffff 100%);
+  box-shadow: 0 8px 25px rgba(26, 35, 126, 0.2);
+}
+
+.message-item.new {
+  border-left: 5px solid #2196f3;
+  box-shadow: 0 2px 12px rgba(33, 150, 243, 0.15);
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.message-header h3 {
+  color: #1a237e;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.message-email {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0 0;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.new {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.status-badge.read {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.status-badge.replied {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.message-subject {
+  color: #333;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.message-preview {
+  color: #666;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.message-date {
+  color: #999;
+  font-size: 0.85rem;
+  margin: 0.5rem 0 0 0;
+}
+
+.message-detail {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  position: sticky;
+  top: 2rem;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.detail-header h2 {
+  color: #1a237e;
+  margin: 0;
+}
+
+.close-detail {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #999;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.close-detail:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-row label {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-row p,
+.detail-row a {
+  color: #333;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.detail-row a {
+  color: #1a237e;
+  text-decoration: none;
+}
+
+.detail-row a:hover {
+  text-decoration: underline;
+}
+
+.detail-message {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-message label {
+  font-weight: 600;
+  color: #666;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.message-text {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  color: #333;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.action-button {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.action-button.read {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.action-button.read:hover:not(:disabled) {
+  background: #e65100;
+  color: white;
+}
+
+.action-button.replied {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.action-button.replied:hover:not(:disabled) {
+  background: #2e7d32;
+  color: white;
+}
+
+.action-button.delete {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.action-button.delete:hover {
+  background: #c62828;
+  color: white;
+}
+
+.action-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 968px) {
+  .manage-contacts {
+    padding: 1rem;
+  }
+
+  .contacts-container {
+    grid-template-columns: 1fr;
+  }
+
+  .message-detail {
+    position: relative;
+    top: 0;
+    max-height: none;
+  }
+
+  .detail-actions {
+    flex-direction: column;
+  }
+
+  .action-button {
+    min-width: 100%;
+  }
+}

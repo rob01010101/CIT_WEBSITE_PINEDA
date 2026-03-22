@@ -1,0 +1,639 @@
+.programs-page {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.programs-hero {
+  background: linear-gradient(135deg, rgba(26, 35, 126, 0.4) 0%, rgba(57, 73, 171, 0.4) 100%),
+              url('/student_activities_images/Student Activities.jpg') center/cover no-repeat;
+  padding: 4rem 2rem;
+  text-align: center;
+  animation: programsHeroBackgroundChange 20s ease-in-out infinite;
+}
+
+@keyframes programsHeroBackgroundChange {
+  0% { background-image: linear-gradient(135deg, rgba(26, 35, 126, 0.4) 0%, rgba(57, 73, 171, 0.4) 100%), url('/student_activities_images/Student Activities.jpg'); }
+  20% { background-image: linear-gradient(135deg, rgba(26, 35, 126, 0.4) 0%, rgba(57, 73, 171, 0.4) 100%), url('/innovait_images/Innova.jpg'); }
+  40% { background-image: linear-gradient(135deg, rgba(26, 35, 126, 0.4) 0%, rgba(57, 73, 171, 0.4) 100%), url('/student_activities_images/Student Activities1.jpg'); }
+  60% { background-image: linear-gradient(135deg, rgba(26, 35, 126, 0.4) 0%, rgba(57, 73, 171, 0.4) 100%), url('/awards_images/awards3.jpg'); }
+  80% { background-image: linear-gradient(135deg, rgba(26, 35, 126, 0.4) 0%, rgba(57, 73, 171, 0.4) 100%), url('/innovait_images/586722798_1341465831326131_4981632896552150819_n.jpg'); }
+  100% { background-image: linear-gradient(135deg, rgba(26, 35, 126, 0.4) 0%, rgba(57, 73, 171, 0.4) 100%), url('/student_activities_images/Student Activities.jpg'); }
+}
+
+.programs-hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.programs-hero-content p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 700px;
+  margin: 0 auto;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Program Highlight Section */
+.program-highlight {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.program-card {
+  background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.program-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 2.5rem;
+}
+
+.program-header h2 {
+  font-size: 1.75rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.program-label {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin: 5px 0 0 0;
+}
+
+.program-description-section {
+  position: relative;
+}
+
+.section-icon {
+  display: none;
+}
+
+.section-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+  color: white;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.section-content p {
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.section-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Specializations Section */
+.specializations-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(rgba(250, 250, 250, 0.95), rgba(250, 250, 250, 0.95)),
+              url('/awards_images/awards3.jpg') center/cover no-repeat fixed;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.section-header svg {
+  color: #1a237e;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 0.75rem;
+}
+
+.section-header p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.specializations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.specialization-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #e8eaf6;
+  border-left: 4px solid #1a237e;
+}
+
+.specialization-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(26, 35, 126, 0.15);
+  border-color: #3949ab;
+}
+
+.spec-icon {
+  color: #1a237e;
+  margin-bottom: 1rem;
+}
+
+.specialization-card h3 {
+  font-size: 1.25rem;
+  color: #1a237e;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.specialization-card > p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.key-skills h4 {
+  font-size: 0.9rem;
+  color: #1a237e;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  background: #e8eaf6;
+  color: #1a237e;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Career Opportunities Section */
+.careers-section {
+  padding: 4rem 2rem;
+  background: white;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.careers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.career-card {
+  background: #fafafa;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #e8eaf6;
+}
+
+.career-card:hover {
+  border-color: #3949ab;
+  background: white;
+  box-shadow: 0 10px 30px rgba(26, 35, 126, 0.1);
+  transform: translateY(-5px);
+}
+
+.career-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a237e;
+  margin: 0 auto 1rem;
+}
+
+.career-card h3 {
+  font-size: 1rem;
+  color: #1a237e;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.career-card p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Curriculum Section */
+.curriculum-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(rgba(250, 250, 250, 0.95), rgba(250, 250, 250, 0.95)),
+              url('/community_events_images/597478583_1361822645957116_3458253094588781467_n.jpg') center/cover no-repeat fixed;
+}
+
+.curriculum-timeline {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.curriculum-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, #1a237e, #3949ab);
+  z-index: 0;
+}
+
+.curriculum-year {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.curriculum-year:nth-child(odd) .year-badge {
+  order: 1;
+}
+
+.curriculum-year:nth-child(odd) .year-content {
+  order: 0;
+  text-align: right;
+}
+
+.curriculum-year:nth-child(even) .year-badge {
+  order: 0;
+}
+
+.curriculum-year:nth-child(even) .year-content {
+  order: 1;
+}
+
+.year-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+  box-shadow: 0 8px 30px rgba(26, 35, 126, 0.4);
+  z-index: 1;
+  position: relative;
+}
+
+.year-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.year-title {
+  font-size: 0.85rem;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.year-content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8eaf6;
+}
+
+.year-content h3 {
+  font-size: 1.25rem;
+  color: #1a237e;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.year-description {
+  color: #666;
+  margin-bottom: 1rem;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.subjects-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.subjects-list li {
+  padding: 0.5rem 0;
+  color: #555;
+  border-bottom: 1px solid #e8eaf6;
+  font-size: 0.9rem;
+}
+
+.subjects-list li:last-child {
+  border-bottom: none;
+}
+
+.subjects-list li::before {
+  content: '▸';
+  color: #1a237e;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.curriculum-action {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.view-curriculum-btn {
+  background: #1a237e;
+  color: white;
+  padding: 0.875rem 2rem;
+  border: 2px solid #1a237e;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-curriculum-btn:hover {
+  background: #283593;
+  border-color: #283593;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
+}
+
+/* Learning Outcomes Section */
+.outcomes-section {
+  padding: 4rem 2rem;
+  background: white;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.outcome-card {
+  text-align: center;
+  padding: 1.5rem;
+  background: #fafafa;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid #e8eaf6;
+}
+
+.outcome-card:hover {
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  border-color: #3949ab;
+}
+
+.outcome-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a237e;
+  margin: 0 auto 1rem;
+}
+
+.outcome-card h3 {
+  font-size: 1rem;
+  color: #1a237e;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.outcome-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* Program Note Section */
+.program-note {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.note-content {
+  background: #fff8e1;
+  border-left: 4px solid #ffc107;
+  padding: 1.5rem;
+  border-radius: 10px;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.note-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.note-content h4 {
+  font-size: 1rem;
+  color: #f57c00;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.note-content p {
+  color: #795548;
+  margin: 0;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Call to Action Section */
+.programs-cta {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+  text-align: center;
+  color: white;
+}
+
+.programs-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.programs-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+.cta-button {
+  background: white;
+  color: #1a237e;
+  padding: 0.875rem 2rem;
+  border: 2px solid white;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: transparent;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .curriculum-timeline::before {
+    left: 20px;
+  }
+
+  .curriculum-year {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-left: 80px;
+  }
+
+  .curriculum-year:nth-child(odd) .year-badge,
+  .curriculum-year:nth-child(even) .year-badge {
+    order: -1;
+    position: absolute;
+    left: 0;
+  }
+
+  .curriculum-year:nth-child(odd) .year-content {
+    order: 1;
+    text-align: left;
+  }
+
+  .year-badge {
+    width: 100px;
+    height: 100px;
+  }
+
+  .careers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .programs-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .programs-hero-content p {
+    font-size: 1rem;
+  }
+
+  .program-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .program-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .specializations-grid,
+  .careers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .programs-cta h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .programs-hero,
+  .program-highlight,
+  .specializations-section,
+  .careers-section,
+  .curriculum-section,
+  .outcomes-section,
+  .programs-cta {
+    padding: 3rem 1rem;
+  }
+
+  .program-card {
+    padding: 1.5rem;
+  }
+
+  .specialization-card,
+  .career-card,
+  .outcome-card,
+  .year-content {
+    padding: 1.25rem;
+  }
+
+  .curriculum-year {
+    padding-left: 60px;
+  }
+
+  .year-badge {
+    width: 80px;
+    height: 80px;
+  }
+
+  .year-number {
+    font-size: 1rem;
+  }
+
+  .year-title {
+    font-size: 0.75rem;
+  }
+
+  .outcomes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
