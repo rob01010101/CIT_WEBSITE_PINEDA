@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { staffService } from '../services/staffService';
+import { cloudinaryService } from '../services/cloudinaryService';
 import AdminLayout from '../components/AdminLayout';
 import ImageUploader from '../components/ImageUploader';
 import type { Staff } from '../types';
@@ -25,6 +26,7 @@ const ManageOrganization = () => {
     displayOrder: 1,
     image: undefined as { url: string; cloudinaryId?: string } | undefined,
   });
+  const isCloudinaryConfigured = cloudinaryService.isConfigured();
 
   const roles: StaffRole[] = ['Dean', 'Faculty', 'Secretary', 'SSITE Officer'];
 
@@ -239,11 +241,29 @@ const ManageOrganization = () => {
                           </button>
                         </div>
                       )}
-                      <ImageUploader
-                        onImageUpload={handleImageUpload}
-                        folder="staff_images"
-                        maxSizeMB={5}
-                      />
+                      {isCloudinaryConfigured ? (
+                        <ImageUploader
+                          onImageUpload={handleImageUpload}
+                          folder="staff_images"
+                          maxSizeMB={5}
+                        />
+                      ) : (
+                        <>
+                          <input
+                            type="url"
+                            value={formData.image?.url || ''}
+                            onChange={(e) => {
+                              const value = e.target.value.trim();
+                              setFormData((prev) => ({
+                                ...prev,
+                                image: value ? { url: value } : undefined,
+                              }));
+                            }}
+                            placeholder="Paste image URL (optional)"
+                          />
+                          <small>Cloudinary is not configured. You can still save staff without a photo, or paste an image URL.</small>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>

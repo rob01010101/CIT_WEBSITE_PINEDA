@@ -6,6 +6,7 @@ import { Plus, Edit, Trash2, Save, X } from 'lucide-react';
 import Pagination from '../components/Pagination';
 import RichTextEditor from '../components/RichTextEditor';
 import ImageUploader from '../components/ImageUploader';
+import { cloudinaryService } from '../services/cloudinaryService';
 import type { CloudinaryUploadResponse } from '../services/cloudinaryService';
 import AdminLayout from '../components/AdminLayout';
 import './ManageAnnouncements.css';
@@ -56,6 +57,7 @@ const ManageAnnouncements = () => {
     imageUrl: '',
     imageCloudinaryId: '',
   });
+  const isCloudinaryConfigured = cloudinaryService.isConfigured();
 
   useEffect(() => {
     loadAnnouncements();
@@ -249,10 +251,28 @@ const ManageAnnouncements = () => {
                           </button>
                         </div>
                       )}
-                      <ImageUploader
-                        onImageUpload={handleImageUpload}
-                        folder="cit_announcements"
-                      />
+                      {isCloudinaryConfigured ? (
+                        <ImageUploader
+                          onImageUpload={handleImageUpload}
+                          folder="cit_announcements"
+                        />
+                      ) : (
+                        <>
+                          <input
+                            type="url"
+                            value={formData.imageUrl}
+                            onChange={(e) =>
+                              setFormData((prev) => ({
+                                ...prev,
+                                imageUrl: e.target.value.trim(),
+                                imageCloudinaryId: '',
+                              }))
+                            }
+                            placeholder="Paste image URL (optional)"
+                          />
+                          <small>Cloudinary is not configured. You can still publish without an image, or paste an image URL.</small>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
