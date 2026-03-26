@@ -38,7 +38,7 @@ const HallOfFame = () => {
       description: 'A comprehensive resident management system that streamlines communication between residents and local government units for better community services.',
       author: 'CIT Research Team',
       year: 'Class of 2024',
-      image: '/research_projects_images/ResiLinked.jpg'
+      image: 'https://res.cloudinary.com/daufhafae/image/upload/v1774530214/cit_website/research_projects/ResiLinked.jpg'
     },
     {
       id: 2,
@@ -46,7 +46,7 @@ const HallOfFame = () => {
       description: 'An innovative IoT-based soil monitoring system that helps farmers optimize crop yields through real-time soil analysis and data-driven recommendations.',
       author: 'CIT Research Team',
       year: 'Class of 2024',
-      image: '/research_projects_images/SoilScope.jpg'
+      image: 'https://res.cloudinary.com/daufhafae/image/upload/v1774530216/cit_website/research_projects/SoilScope.jpg'
     },
     {
       id: 3,
@@ -54,7 +54,7 @@ const HallOfFame = () => {
       description: 'A digital healthcare management platform designed to modernize university clinic operations with appointment scheduling, patient records, and health monitoring.',
       author: 'CIT Research Team',
       year: 'Class of 2024',
-      image: '/research_projects_images/UAClinicSystem.jpg'
+      image: 'https://res.cloudinary.com/daufhafae/image/upload/v1774530217/cit_website/research_projects/UA%20Clinic%20System.jpg'
     }
   ];
 
