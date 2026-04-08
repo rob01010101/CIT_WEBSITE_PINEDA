@@ -2,99 +2,62 @@ import { useEffect, useMemo, useState } from 'react';
 import { Image as ImageIcon, User } from 'lucide-react';
 import SearchBar from '../components/SearchBar';
 import { imageService } from '../services/imageService';
-import type { GalleryImage } from '../types';
+import { capstoneService } from '../services/capstoneService';
+import type { GalleryImage, CapstoneProject } from '../types';
 import './HallOfFame.css';
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  author: string;
-  year: string;
-  image: string;
-}
 
 const HallOfFame = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [awardsImages, setAwardsImages] = useState<GalleryImage[]>([]);
+  const [projects, setProjects] = useState<CapstoneProject[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadAwardsImages = async () => {
+    const loadData = async () => {
       try {
-        const data = await imageService.getByCategory('awards-recognitions');
-        setAwardsImages(data);
+        setLoading(true);
+        const [awardsData, projectsData] = await Promise.all([
+          imageService.getByCategory('awards-recognitions'),
+          capstoneService.getAll()
+        ]);
+        setAwardsImages(awardsData);
+        setProjects(projectsData);
       } catch (error) {
-        console.error('Error loading awards images:', error);
+        console.error('Error loading data:', error);
+        // Set empty arrays on error so the page still renders
+        setAwardsImages([]);
+        setProjects([]);
+      } finally {
+        setLoading(false);
       }
     };
 
-    loadAwardsImages();
+    loadData();
   }, []);
-
-  const projects2024: Project[] = [
-    {
-      id: 1,
-      title: 'ResiLinked',
-      description: 'A comprehensive resident management system that streamlines communication between residents and local government units for better community services.',
-      author: 'CIT Research Team',
-      year: 'Class of 2024',
-      image: 'https://res.cloudinary.com/daufhafae/image/upload/v1774530214/cit_website/research_projects/ResiLinked.jpg'
-    },
-    {
-      id: 2,
-      title: 'SoilScope',
-      description: 'An innovative IoT-based soil monitoring system that helps farmers optimize crop yields through real-time soil analysis and data-driven recommendations.',
-      author: 'CIT Research Team',
-      year: 'Class of 2024',
-      image: 'https://res.cloudinary.com/daufhafae/image/upload/v1774530216/cit_website/research_projects/SoilScope.jpg'
-    },
-    {
-      id: 3,
-      title: 'UA Clinic System',
-      description: 'A digital healthcare management platform designed to modernize university clinic operations with appointment scheduling, patient records, and health monitoring.',
-      author: 'CIT Research Team',
-      year: 'Class of 2024',
-      image: 'https://res.cloudinary.com/daufhafae/image/upload/v1774530217/cit_website/research_projects/UA%20Clinic%20System.jpg'
-    }
-  ];
-
-  const projects2025: Project[] = [
-    // 2025 capstone projects to be added
-  ];
 
   const normalizedQuery = searchQuery.trim().toLowerCase();
 
-  const filteredProjects2024 = useMemo(
-    () =>
-      projects2024.filter((project) => {
-        if (!normalizedQuery) {
-          return true;
-        }
+  // Group projects by year
+  const projectsByYear = useMemo(() => {
+    const filtered = projects.filter((project) => {
+      if (!normalizedQuery) return true;
+      return (
+        project.title.toLowerCase().includes(normalizedQuery) ||
+        project.description.toLowerCase().includes(normalizedQuery) ||
+        project.author.toLowerCase().includes(normalizedQuery)
+      );
+    });
 
-        return (
-          project.title.toLowerCase().includes(normalizedQuery) ||
-          project.description.toLowerCase().includes(normalizedQuery) ||
-          project.author.toLowerCase().includes(normalizedQuery)
-        );
-      }),
-    [normalizedQuery]
-  );
+    return filtered.reduce((acc, project) => {
+      if (!acc[project.year]) {
+        acc[project.year] = [];
+      }
+      acc[project.year].push(project);
+      return acc;
+    }, {} as Record<string, CapstoneProject[]>);
+  }, [projects, normalizedQuery]);
 
-  const filteredProjects2025 = useMemo(
-    () =>
-      projects2025.filter((project) => {
-        if (!normalizedQuery) {
-          return true;
-        }
-
-        return (
-          project.title.toLowerCase().includes(normalizedQuery) ||
-          project.description.toLowerCase().includes(normalizedQuery) ||
-          project.author.toLowerCase().includes(normalizedQuery)
-        );
-      }),
-    [normalizedQuery]
-  );
+  const years = Object.keys(projectsByYear).sort((a, b) => parseInt(b) - parseInt(a));
 
   const filteredAwards = useMemo(
     () =>
@@ -102,7 +65,6 @@ const HallOfFame = () => {
         if (!normalizedQuery) {
           return true;
         }
-
         return image.title.toLowerCase().includes(normalizedQuery);
       }),
     [awardsImages, normalizedQuery]
@@ -124,57 +86,47 @@ const HallOfFame = () => {
         />
       </section>
 
-      {/* 2025 Capstone Projects */}
-      <section className="featured-projects">
-        <h2>2025 Capstone Projects</h2>
-        <div className="featured-grid">
-          {filteredProjects2025.length > 0 ? (
-            filteredProjects2025.map((project) => (
-              <article key={project.id} className="featured-project-card">
-                <div className="featured-image-container">
-                  <img src={project.image} alt={project.title} className="featured-image" />
-                </div>
-                <div className="featured-info">
-                  <h3>{project.title}</h3>
-                  <p className="featured-description">{project.description}</p>
-                  <div className="project-author">
-                    <User size={14} />
-                    <span>{project.author} - {project.year}</span>
-                  </div>
-                </div>
-              </article>
-            ))
-          ) : (
-            <p className="no-projects">2025 capstone projects will be added soon.</p>
-          )}
+      {/* Capstone Projects by Year */}
+      {loading ? (
+        <div className="loading-container">
+          <div className="spinner"></div>
+          <p>Loading projects...</p>
         </div>
-      </section>
-
-      {/* 2024 Capstone Projects */}
-      <section className="featured-projects">
-        <h2>2024 Capstone Projects</h2>
-        <div className="featured-grid">
-          {filteredProjects2024.length > 0 ? (
-            filteredProjects2024.map((project) => (
-              <article key={project.id} className="featured-project-card">
-                <div className="featured-image-container">
-                  <img src={project.image} alt={project.title} className="featured-image" />
-                </div>
-                <div className="featured-info">
-                  <h3>{project.title}</h3>
-                  <p className="featured-description">{project.description}</p>
-                  <div className="project-author">
-                    <User size={14} />
-                    <span>{project.author} - {project.year}</span>
-                  </div>
-                </div>
-              </article>
-            ))
-          ) : (
-            <p className="no-projects">No 2024 projects match your search.</p>
-          )}
-        </div>
-      </section>
+      ) : years.length > 0 ? (
+        years.map(year => (
+          <section key={year} className="featured-projects">
+            <h2>{year} Capstone Projects</h2>
+            <div className="featured-grid">
+              {projectsByYear[year]
+                .sort((a, b) => a.displayOrder - b.displayOrder)
+                .map((project) => (
+                  <article key={project.id} className="featured-project-card">
+                    <div className="featured-image-container">
+                      <img src={project.image.url} alt={project.title} className="featured-image" />
+                    </div>
+                    <div className="featured-info">
+                      <h3>{project.title}</h3>
+                      <p className="featured-description">{project.description}</p>
+                      <div className="project-author">
+                        <User size={14} />
+                        <span>{project.author} - Class of {project.year}</span>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+            </div>
+          </section>
+        ))
+      ) : (
+        <section className="featured-projects">
+          <h2>Capstone Projects</h2>
+          <p className="no-projects">
+            {normalizedQuery
+              ? 'No projects match your search.'
+              : 'Capstone projects will be added soon.'}
+          </p>
+        </section>
+      )}
 
       {/* Awards Gallery */}
       <section className="awards-gallery">

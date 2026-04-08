@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { FileText, Image, Users, Mail, UserCheck, ChevronRight } from 'lucide-react';
+import { FileText, Image, Users, Mail, UserCheck, ChevronRight, Award } from 'lucide-react';
 import AdminLayout from '../components/AdminLayout';
 import './AdminDashboard.css';
 
@@ -9,6 +9,7 @@ const AdminDashboard = () => {
   const quickAccessCards = [
     { icon: FileText, label: 'Announcements', color: '#3949ab', path: '/admin/announcements' },
     { icon: Image, label: 'Galleries', color: '#5e35b1', path: '/admin/galleries' },
+    { icon: Award, label: 'Projects', color: '#7b1fa2', path: '/admin/projects' },
     { icon: Users, label: 'Organization', color: '#7e57c2', path: '/admin/organization' },
     { icon: Mail, label: 'Messages', color: '#9575cd', path: '/admin/contacts' },
   ];
@@ -74,6 +75,17 @@ const AdminDashboard = () => {
               <div className="item-content">
                 <h4>Galleries</h4>
                 <p>Upload and organize images for Home, About, and Hall of Fame sections.</p>
+              </div>
+              <ChevronRight className="item-arrow" size={20} />
+            </div>
+
+            <div className="management-item" onClick={() => navigate('/admin/projects')}>
+              <div className="item-icon">
+                <Award size={32} />
+              </div>
+              <div className="item-content">
+                <h4>Capstone Projects</h4>
+                <p>Manage and showcase student capstone projects in the Hall of Fame.</p>
               </div>
               <ChevronRight className="item-arrow" size={20} />
             </div>

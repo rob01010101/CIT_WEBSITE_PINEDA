@@ -19,6 +19,7 @@ import ManageOrganization from './pages/ManageOrganization';
 import ManageEvents from './pages/ManageEvents';
 import ManageContacts from './pages/ManageContacts';
 import ManageRegistrations from './pages/ManageRegistrations';
+import ManageProjects from './pages/ManageProjects';
 import './App.css';
 
 // Layout component for public pages
@@ -62,6 +63,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <ManageGalleries />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/projects"
+              element={
+                <ProtectedRoute>
+                  <ManageProjects />
                 </ProtectedRoute>
               }
             />

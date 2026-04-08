@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { LogOut, FileText, Users, Home, Mail, UserCheck, Image, Menu, LayoutDashboard } from 'lucide-react';
+import { LogOut, FileText, Users, Home, Mail, UserCheck, Image, Menu, LayoutDashboard, Award } from 'lucide-react';
 import './AdminLayout.css';
 
 interface AdminLayoutProps {
@@ -28,6 +28,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       items: [
         { icon: FileText, label: 'Announcements', path: '/admin/announcements' },
         { icon: Image, label: 'Galleries', path: '/admin/galleries' },
+        { icon: Award, label: 'Capstone Projects', path: '/admin/projects' },
       ]
     },
     {

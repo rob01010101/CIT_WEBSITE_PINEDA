@@ -75,3 +75,18 @@ export interface EventRegistration {
   phone?: string;
   createdAt: Date;
 }
+
+export interface CapstoneProject {
+  id: string;
+  title: string;
+  description: string;
+  author: string;
+  year: string;
+  image: {
+    url: string;
+    cloudinaryId?: string;
+  };
+  displayOrder: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
