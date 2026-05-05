@@ -4,6 +4,7 @@ import {
   Laptop, 
   Calendar,
   ArrowRight,
+  ExternalLink,
   Image as ImageIcon,
   Lightbulb,
   Award,
@@ -15,15 +16,18 @@ import {
 } from 'lucide-react';
 import './Home.css';
 import { announcementService } from '../services/announcementService';
+import { newsService } from '../services/newsService';
 import { imageService } from '../services/imageService';
-import type { Announcement, GalleryImage } from '../types';
+import type { Announcement, GalleryImage, News } from '../types';
 
 const Home = () => {
   const [activeGallery, setActiveGallery] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
+  const [newsItems, setNewsItems] = useState<News[]>([]);
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState(true);
+  const [newsLoading, setNewsLoading] = useState(true);
   const [galleryLoading, setGalleryLoading] = useState(true);
 
   useEffect(() => {
@@ -40,6 +44,21 @@ const Home = () => {
     };
 
     fetchAnnouncements();
+  }, []);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const data = await newsService.getAll();
+        setNewsItems(data.slice(0, 3));
+      } catch (error) {
+        console.error('Error fetching news:', error);
+      } finally {
+        setNewsLoading(false);
+      }
+    };
+
+    fetchNews();
   }, []);
 
   useEffect(() => {
@@ -80,6 +99,19 @@ const Home = () => {
     }
   ];
 
+  const quickLinks = [
+    {
+      title: 'SSITE Website',
+      url: 'https://ssite-website.vercel.app',
+      displayUrl: 'ssite-website.vercel.app'
+    },
+    {
+      title: 'Research Archive',
+      url: 'https://research-archived-gray.vercel.app/index.html',
+      displayUrl: 'research-archived-gray.vercel.app'
+    }
+  ];
+
   const openGallery = (categoryId: string) => {
     setActiveGallery(categoryId);
     setCurrentImageIndex(0);
@@ -99,6 +131,14 @@ const Home = () => {
     if (galleryImages.length > 0) {
       setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
     }
+  };
+
+  const getNewsExcerpt = (item: News) => {
+    const textContent = item.contentHtml
+      ? new DOMParser().parseFromString(item.contentHtml, 'text/html').body.textContent || ''
+      : item.content.join(' ');
+    const trimmed = textContent.trim();
+    return trimmed.length > 120 ? `${trimmed.slice(0, 120)}...` : trimmed;
   };
 
   return (
@@ -126,6 +166,31 @@ const Home = () => {
               <Laptop size={80} />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Quick Links */}
+      <section className="quick-links-section">
+        <div className="section-header centered">
+          <h2>Quick Links</h2>
+          <p>Explore featured student project websites</p>
+        </div>
+        <div className="quick-links-grid">
+          {quickLinks.map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              className="quick-link-card"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="quick-link-text">
+                <h3>{link.title}</h3>
+                <span className="quick-link-url">{link.displayUrl}</span>
+              </div>
+              <ExternalLink size={20} />
+            </a>
+          ))}
         </div>
       </section>
 
@@ -160,6 +225,41 @@ const Home = () => {
                 <Link to={`/announcements#${item.id}`} className="announcement-read-more">
                   Read more &gt;
                 </Link>
+              </article>
+            ))
+          )}
+        </div>
+      </section>
+
+      {/* News Section */}
+      <section className="news-section">
+        <div className="section-header">
+          <h2>Featured News</h2>
+          <Link to="/news" className="view-all">
+            View all News <ArrowRight size={16} />
+          </Link>
+        </div>
+        <div className="news-grid">
+          {newsLoading ? (
+            <p>Loading news...</p>
+          ) : newsItems.length === 0 ? (
+            <p>No news available at the moment.</p>
+          ) : (
+            newsItems.map((item) => (
+              <article key={item.id} className="news-card">
+                {item.image?.url ? (
+                  <img src={item.image.url} alt={item.title} className="news-thumbnail" />
+                ) : (
+                  <div className="news-thumbnail-placeholder">
+                    <ImageIcon size={36} />
+                  </div>
+                )}
+                <div className="news-date">
+                  <Calendar size={14} />
+                  <span>{item.date}</span>
+                </div>
+                <h3>{item.title}</h3>
+                <p>{getNewsExcerpt(item)}</p>
               </article>
             ))
           )}

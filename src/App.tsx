@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Programs from './pages/Programs';
 import Announcements from './pages/Announcements';
+import News from './pages/News';
 import HallOfFame from './pages/HallOfFame';
 import Organization from './pages/Organization';
 import Contacts from './pages/Contacts';
@@ -14,6 +15,7 @@ import FAQ from './pages/FAQ';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import ManageAnnouncements from './pages/ManageAnnouncements';
+import ManageNews from './pages/ManageNews';
 import ManageGalleries from './pages/ManageGalleries';
 import ManageOrganization from './pages/ManageOrganization';
 import ManageEvents from './pages/ManageEvents';
@@ -55,6 +57,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <ManageAnnouncements />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/news"
+              element={
+                <ProtectedRoute>
+                  <ManageNews />
                 </ProtectedRoute>
               }
             />
@@ -112,6 +122,7 @@ function App() {
             <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
             <Route path="/programs" element={<PublicLayout><Programs /></PublicLayout>} />
             <Route path="/announcements" element={<PublicLayout><Announcements /></PublicLayout>} />
+            <Route path="/news" element={<PublicLayout><News /></PublicLayout>} />
             <Route path="/hall-of-fame" element={<PublicLayout><HallOfFame /></PublicLayout>} />
             <Route path="/organization" element={<PublicLayout><Organization /></PublicLayout>} />
             <Route path="/events" element={<PublicLayout><Organization /></PublicLayout>} />

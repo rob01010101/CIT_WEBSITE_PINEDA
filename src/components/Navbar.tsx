@@ -12,6 +12,7 @@ const Navbar = () => {
     { path: '/about', label: 'About us' },
     { path: '/programs', label: 'Programs' },
     { path: '/announcements', label: 'Announcements' },
+    { path: '/news', label: 'News' },
     { path: '/hall-of-fame', label: 'Hall of Fame' },
     { path: '/organization', label: 'Organization' },
     { path: '/faq', label: 'FAQ' },

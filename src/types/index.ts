@@ -15,6 +15,21 @@ export interface Announcement {
   updatedAt: Date;
 }
 
+export interface News {
+  id: string;
+  date: string;
+  title: string;
+  content: string[];
+  contentHtml?: string;
+  category: 'announcement' | 'event' | 'activity' | 'partnership';
+  image?: {
+    url: string;
+    cloudinaryId?: string;
+  };
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface GalleryImage {
   id: string;
   title: string;

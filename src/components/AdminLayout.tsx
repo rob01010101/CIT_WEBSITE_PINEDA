@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { LogOut, FileText, Users, Home, Mail, UserCheck, Image, Menu, LayoutDashboard, Award } from 'lucide-react';
+import { LogOut, FileText, Users, Home, Mail, Image, Menu, LayoutDashboard, Award, Newspaper } from 'lucide-react';
 import './AdminLayout.css';
 
 interface AdminLayoutProps {
@@ -27,6 +27,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       title: 'Content Management',
       items: [
         { icon: FileText, label: 'Announcements', path: '/admin/announcements' },
+        { icon: Newspaper, label: 'News', path: '/admin/news' },
         { icon: Image, label: 'Galleries', path: '/admin/galleries' },
         { icon: Award, label: 'Capstone Projects', path: '/admin/projects' },
       ]
@@ -41,7 +42,6 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       title: 'Communications',
       items: [
         { icon: Mail, label: 'Contact Messages', path: '/admin/contacts' },
-        { icon: UserCheck, label: 'Registrations', path: '/admin/registrations' },
       ]
     }
   ];

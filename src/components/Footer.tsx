@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Facebook, Youtube, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook } from 'lucide-react';
+import QRCode from './QRCode';
 import './Footer.css';
 
 const Footer = () => {
@@ -17,13 +17,29 @@ const Footer = () => {
           </div>
 
           <div className="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><Link to="/about">About us</Link></li>
-              <li><Link to="/announcements">Announcements</Link></li>
-              <li><Link to="/hall-of-fame">Hall of Fame</Link></li>
-              <li><Link to="/events">Events</Link></li>
-            </ul>
+            <h3>QR Links</h3>
+            <div className="footer-qr-links">
+              <a
+                className="footer-qr-link"
+                href="https://ssite-website.vercel.app"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <QRCode value="https://ssite-website.vercel.app" size={72} label="SSITE Website" />
+              </a>
+              <a
+                className="footer-qr-link"
+                href="https://research-archived-gray.vercel.app"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <QRCode
+                  value="https://research-archived-gray.vercel.app"
+                  size={72}
+                  label="Research Archive"
+                />
+              </a>
+            </div>
           </div>
 
           <div className="footer-section">
@@ -53,12 +69,6 @@ const Footer = () => {
             <div className="social-links">
               <a href="#" aria-label="Facebook" className="social-link">
                 <Facebook size={20} />
-              </a>
-              <a href="#" aria-label="YouTube" className="social-link">
-                <Youtube size={20} />
-              </a>
-              <a href="#" aria-label="Discord" className="social-link">
-                <MessageCircle size={20} />
               </a>
             </div>
           </div>

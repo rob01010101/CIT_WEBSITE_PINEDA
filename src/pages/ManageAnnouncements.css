@@ -436,6 +436,21 @@ form {
   color: #e65100;
 }
 
+.type-badge.announcement {
+  background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+  color: #283593;
+}
+
+.type-badge.activity {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  color: #2e7d32;
+}
+
+.type-badge.partnership {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  color: #e65100;
+}
+
 .date {
   color: #666;
   font-size: 0.9rem;

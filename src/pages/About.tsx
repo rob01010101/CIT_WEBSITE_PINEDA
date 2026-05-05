@@ -4,11 +4,6 @@ import {
   Eye, 
   History,
   Star,
-  Cloud,
-  Shield,
-  Database,
-  Code,
-  Globe,
   Building2,
   Cpu,
   GraduationCap,
@@ -34,39 +29,6 @@ const About = () => {
 
     loadFeaturedImages();
   }, []);
-
-  const programs = [
-    {
-      title: 'Cloud Architect',
-      icon: Cloud,
-      description: 'Focus on algorithms, software development, and theoretical foundations of computing.'
-    },
-    {
-      title: 'Information Technology',
-      icon: Cpu,
-      description: 'Practical skills in system administration, network management, and IT infrastructure.'
-    },
-    {
-      title: 'Cybersecurity',
-      icon: Shield,
-      description: 'Learn to protect systems and data from cyber threats with hands-on security training.'
-    },
-    {
-      title: 'Data Science',
-      icon: Database,
-      description: 'Master data analysis, machine learning, and visualization to drive insights.'
-    },
-    {
-      title: 'Software Engineering',
-      icon: Code,
-      description: 'Design, develop, and maintain complex software systems using industry best practices.'
-    },
-    {
-      title: 'Web Development',
-      icon: Globe,
-      description: 'Create modern, responsive web applications using the latest frameworks and tools.'
-    }
-  ];
 
   const whyChooseItems = [
     {
@@ -140,35 +102,8 @@ const About = () => {
           </div>
           <div className="history-content">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna 
-              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                The University of the Assumption in the Philippines is an Archdiocesan Catholic university, founded in 1963, which has evolved to include the College of Information Technology, The program has been structured to include both technological knowledge and, as a Catholic institution, a focus on ethics. The institution has maintained its focus on Information Technology as part of its curriculum updates through the years.
             </p>
-            <p>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-              eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Programs Section */}
-      <section className="programs-section">
-        <div className="programs-container">
-          <h2>Our Programs</h2>
-          <div className="programs-grid">
-            {programs.map((program, index) => (
-              <div key={index} className="program-card">
-                <div className="program-icon">
-                  <program.icon size={24} />
-                </div>
-                <h3>{program.title}</h3>
-                <p>{program.description}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>

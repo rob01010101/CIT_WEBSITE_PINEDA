@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { FileText, Image, Users, Mail, UserCheck, ChevronRight, Award } from 'lucide-react';
+import { FileText, Image, Users, Mail, ChevronRight, Award, Newspaper } from 'lucide-react';
 import AdminLayout from '../components/AdminLayout';
 import './AdminDashboard.css';
 
@@ -8,6 +8,7 @@ const AdminDashboard = () => {
 
   const quickAccessCards = [
     { icon: FileText, label: 'Announcements', color: '#3949ab', path: '/admin/announcements' },
+    { icon: Newspaper, label: 'News', color: '#1e88e5', path: '/admin/news' },
     { icon: Image, label: 'Galleries', color: '#5e35b1', path: '/admin/galleries' },
     { icon: Award, label: 'Projects', color: '#7b1fa2', path: '/admin/projects' },
     { icon: Users, label: 'Organization', color: '#7e57c2', path: '/admin/organization' },
@@ -68,6 +69,17 @@ const AdminDashboard = () => {
               <ChevronRight className="item-arrow" size={20} />
             </div>
 
+            <div className="management-item" onClick={() => navigate('/admin/news')}>
+              <div className="item-icon">
+                <Newspaper size={32} />
+              </div>
+              <div className="item-content">
+                <h4>News</h4>
+                <p>Publish stories, achievements, events, and partnerships across the CIT community.</p>
+              </div>
+              <ChevronRight className="item-arrow" size={20} />
+            </div>
+
             <div className="management-item" onClick={() => navigate('/admin/galleries')}>
               <div className="item-icon">
                 <Image size={32} />
@@ -108,17 +120,6 @@ const AdminDashboard = () => {
               <div className="item-content">
                 <h4>Messages</h4>
                 <p>View and respond to contact inquiries from your website visitors.</p>
-              </div>
-              <ChevronRight className="item-arrow" size={20} />
-            </div>
-
-            <div className="management-item" onClick={() => navigate('/admin/registrations')}>
-              <div className="item-icon">
-                <UserCheck size={32} />
-              </div>
-              <div className="item-content">
-                <h4>Registrations</h4>
-                <p>Track and manage event registrations and Sign-ups.</p>
               </div>
               <ChevronRight className="item-arrow" size={20} />
             </div>
