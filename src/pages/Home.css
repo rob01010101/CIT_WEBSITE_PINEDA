@@ -122,57 +122,6 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Quick Links Section */
-.quick-links-section {
-  padding: 3.5rem 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.quick-links-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.quick-link-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.5rem 1.75rem;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #e8eaf6 0%, #f5f7ff 100%);
-  border: 1px solid #e0e7ff;
-  text-decoration: none;
-  color: #1a237e;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.quick-link-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(26, 35, 126, 0.15);
-  border-color: #c5cae9;
-}
-
-.quick-link-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.quick-link-text h3 {
-  margin: 0 0 0.35rem 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #1a237e;
-}
-
-.quick-link-url {
-  font-size: 0.9rem;
-  color: #5c6bc0;
-}
-
 /* Section Styling */
 .section-header {
   display: flex;

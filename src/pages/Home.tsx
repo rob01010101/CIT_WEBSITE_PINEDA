@@ -4,7 +4,6 @@ import {
   Laptop, 
   Calendar,
   ArrowRight,
-  ExternalLink,
   Image as ImageIcon,
   Lightbulb,
   Award,
@@ -99,19 +98,6 @@ const Home = () => {
     }
   ];
 
-  const quickLinks = [
-    {
-      title: 'SSITE Website',
-      url: 'https://ssite-website.vercel.app',
-      displayUrl: 'ssite-website.vercel.app'
-    },
-    {
-      title: 'Research Archive',
-      url: 'https://research-archived-gray.vercel.app/index.html',
-      displayUrl: 'research-archived-gray.vercel.app'
-    }
-  ];
-
   const openGallery = (categoryId: string) => {
     setActiveGallery(categoryId);
     setCurrentImageIndex(0);
@@ -166,31 +152,6 @@ const Home = () => {
               <Laptop size={80} />
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Quick Links */}
-      <section className="quick-links-section">
-        <div className="section-header centered">
-          <h2>Quick Links</h2>
-          <p>Explore featured student project websites</p>
-        </div>
-        <div className="quick-links-grid">
-          {quickLinks.map((link) => (
-            <a
-              key={link.url}
-              href={link.url}
-              className="quick-link-card"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="quick-link-text">
-                <h3>{link.title}</h3>
-                <span className="quick-link-url">{link.displayUrl}</span>
-              </div>
-              <ExternalLink size={20} />
-            </a>
-          ))}
         </div>
       </section>
 
