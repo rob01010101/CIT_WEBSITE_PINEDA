@@ -65,10 +65,10 @@ const Announcements = () => {
 
   const getTypeLabel = (type: string) => {
     switch (type) {
-      case 'important': return 'Important';
-      case 'achievement': return 'Achievement';
-      case 'event': return 'Event';
-      case 'facility': return 'Facility Update';
+      case 'important': return 'Advisories';
+      case 'achievement': return 'Academic';
+      case 'event': return 'Events';
+      case 'facility': return 'Others';
       default: return type;
     }
   };

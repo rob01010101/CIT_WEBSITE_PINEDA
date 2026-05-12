@@ -45,7 +45,7 @@ const extractParagraphsFromHtml = (html: string): string[] => {
 const getCategoryLabel = (category: News['category']) => {
   switch (category) {
     case 'announcement':
-      return 'Announcement';
+      return 'Achievements';
     case 'event':
       return 'Event';
     case 'activity':
@@ -237,7 +237,7 @@ const ManageNews = () => {
                             }))
                           }
                         >
-                          <option value="announcement">Announcement</option>
+                          <option value="announcement">Achievements</option>
                           <option value="event">Event</option>
                           <option value="activity">Activity</option>
                           <option value="partnership">Partnership</option>

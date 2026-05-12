@@ -155,6 +155,41 @@ const Home = () => {
         </div>
       </section>
 
+      {/* News Section */}
+      <section className="news-section">
+        <div className="section-header">
+          <h2>Featured News</h2>
+          <Link to="/news" className="view-all">
+            View all News <ArrowRight size={16} />
+          </Link>
+        </div>
+        <div className="news-grid">
+          {newsLoading ? (
+            <p>Loading news...</p>
+          ) : newsItems.length === 0 ? (
+            <p>No news available at the moment.</p>
+          ) : (
+            newsItems.map((item) => (
+              <article key={item.id} className="news-card">
+                {item.image?.url ? (
+                  <img src={item.image.url} alt={item.title} className="news-thumbnail" />
+                ) : (
+                  <div className="news-thumbnail-placeholder">
+                    <ImageIcon size={36} />
+                  </div>
+                )}
+                <div className="news-date">
+                  <Calendar size={14} />
+                  <span>{item.date}</span>
+                </div>
+                <h3>{item.title}</h3>
+                <p>{getNewsExcerpt(item)}</p>
+              </article>
+            ))
+          )}
+        </div>
+      </section>
+
       {/* Announcements Section */}
       <section className="announcements-section">
         <div className="section-header">
@@ -186,41 +221,6 @@ const Home = () => {
                 <Link to={`/announcements#${item.id}`} className="announcement-read-more">
                   Read more &gt;
                 </Link>
-              </article>
-            ))
-          )}
-        </div>
-      </section>
-
-      {/* News Section */}
-      <section className="news-section">
-        <div className="section-header">
-          <h2>Featured News</h2>
-          <Link to="/news" className="view-all">
-            View all News <ArrowRight size={16} />
-          </Link>
-        </div>
-        <div className="news-grid">
-          {newsLoading ? (
-            <p>Loading news...</p>
-          ) : newsItems.length === 0 ? (
-            <p>No news available at the moment.</p>
-          ) : (
-            newsItems.map((item) => (
-              <article key={item.id} className="news-card">
-                {item.image?.url ? (
-                  <img src={item.image.url} alt={item.title} className="news-thumbnail" />
-                ) : (
-                  <div className="news-thumbnail-placeholder">
-                    <ImageIcon size={36} />
-                  </div>
-                )}
-                <div className="news-date">
-                  <Calendar size={14} />
-                  <span>{item.date}</span>
-                </div>
-                <h3>{item.title}</h3>
-                <p>{getNewsExcerpt(item)}</p>
               </article>
             ))
           )}

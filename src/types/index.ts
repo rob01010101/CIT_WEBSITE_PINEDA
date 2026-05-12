@@ -44,7 +44,7 @@ export interface GalleryImage {
 export interface Staff {
   id: string;
   name: string;
-  role: string; // e.g., 'Dean', 'Faculty', 'SSITE Officer'
+  role: string; // e.g., 'Dean', 'Secretary', 'Faculty'
   position: string; // e.g., 'Computer Science', 'Web Development'
   fullTime: boolean;
   department?: string;

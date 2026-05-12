@@ -9,7 +9,7 @@ import './News.css';
 const ITEMS_PER_PAGE = 9;
 
 const CATEGORY_LABELS: Record<Announcement['type'], string> = {
-  important: 'Announcements',
+  important: 'Achievements',
   event: 'Events',
   achievement: 'Activities',
   facility: 'Partnerships',
@@ -77,7 +77,7 @@ const NewsPage = () => {
 
   const categories: Array<{ value: 'all' | Announcement['type']; label: string }> = [
     { value: 'all', label: 'All News' },
-    { value: 'important', label: 'Announcements' },
+    { value: 'important', label: 'Achievements' },
     { value: 'event', label: 'Events' },
     { value: 'achievement', label: 'Activities' },
     { value: 'facility', label: 'Partnerships' },

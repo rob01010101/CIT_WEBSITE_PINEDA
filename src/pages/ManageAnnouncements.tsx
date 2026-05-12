@@ -42,6 +42,21 @@ const extractParagraphsFromHtml = (html: string): string[] => {
   return fallback ? [fallback] : [];
 };
 
+const getTypeLabel = (type: Announcement['type']) => {
+  switch (type) {
+    case 'important':
+      return 'Advisories';
+    case 'achievement':
+      return 'Academic';
+    case 'event':
+      return 'Events';
+    case 'facility':
+      return 'Others';
+    default:
+      return type;
+  }
+};
+
 const ManageAnnouncements = () => {
   const { currentUser } = useAuth();
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
@@ -217,10 +232,10 @@ const ManageAnnouncements = () => {
                         value={formData.type}
                         onChange={(e) => setFormData(prev => ({ ...prev, type: e.target.value as Announcement['type'] }))}
                       >
-                        <option value="important">Important</option>
-                        <option value="achievement">Achievement</option>
-                        <option value="event">Event</option>
-                        <option value="facility">Facility Update</option>
+                        <option value="important">Advisories</option>
+                        <option value="achievement">Academic</option>
+                        <option value="event">Events</option>
+                        <option value="facility">Others</option>
                       </select>
                     </div>
                   </div>
@@ -313,7 +328,7 @@ const ManageAnnouncements = () => {
                     <h3>{announcement.title}</h3>
                     <div className="announcement-meta">
                       <span className={`type-badge ${announcement.type}`}>
-                        {announcement.type}
+                        {getTypeLabel(announcement.type)}
                       </span>
                       <span className="date">{announcement.date}</span>
                     </div>

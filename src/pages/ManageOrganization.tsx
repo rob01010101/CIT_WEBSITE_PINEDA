@@ -9,7 +9,7 @@ import type { CloudinaryUploadResponse } from '../services/cloudinaryService';
 import { Plus, Edit, Trash2, X, Save } from 'lucide-react';
 import './ManageOrganization.css';
 
-type StaffRole = 'Dean' | 'Faculty' | 'Secretary' | 'SSITE Officer';
+type StaffRole = 'Dean' | 'Secretary' | 'Faculty';
 
 const ManageOrganization = () => {
   const { currentUser } = useAuth();
@@ -28,7 +28,7 @@ const ManageOrganization = () => {
   });
   const isCloudinaryConfigured = cloudinaryService.isConfigured();
 
-  const roles: StaffRole[] = ['Dean', 'Faculty', 'Secretary', 'SSITE Officer'];
+  const roles: StaffRole[] = ['Dean', 'Secretary', 'Faculty'];
 
   useEffect(() => {
     loadStaff();

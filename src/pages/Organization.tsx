@@ -48,7 +48,7 @@ const Organization = () => {
   const secretaryCount = getRoleCount('Secretary');
   const facultyCount = getRoleCount('Faculty');
 
-  const leadershipRoles = ['Dean', 'Secretary', 'SSITE Officer'];
+  const leadershipRoles = ['Dean', 'Secretary'];
   const facultyRole = 'Faculty';
 
   const summaryStats = [
