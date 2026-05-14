@@ -357,8 +357,8 @@
 
 .staff-image,
 .avatar-placeholder {
-  width: 72px;
-  height: 72px;
+  width: 208px;
+  height: 208px;
   border-radius: 50%;
 }
 
@@ -371,7 +371,7 @@
   display: grid;
   place-items: center;
   color: #fff;
-  font-size: 1.45rem;
+  font-size: 1.75rem;
   font-weight: 800;
   background: linear-gradient(135deg, #4f65d9 0%, #7b4fc4 100%);
 }

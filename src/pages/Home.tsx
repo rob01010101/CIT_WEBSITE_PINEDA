@@ -119,13 +119,16 @@ const Home = () => {
     }
   };
 
-  const getNewsExcerpt = (item: News) => {
+  const getNewsExcerpt = (item: News, maxLength = 120) => {
     const textContent = item.contentHtml
       ? new DOMParser().parseFromString(item.contentHtml, 'text/html').body.textContent || ''
       : item.content.join(' ');
     const trimmed = textContent.trim();
-    return trimmed.length > 120 ? `${trimmed.slice(0, 120)}...` : trimmed;
+    return trimmed.length > maxLength ? `${trimmed.slice(0, maxLength)}...` : trimmed;
   };
+
+  const featuredNews = newsItems[0];
+  const featuredDots = newsItems.slice(0, Math.min(newsItems.length, 5));
 
   return (
     <div className="home">
@@ -163,29 +166,53 @@ const Home = () => {
             View all News <ArrowRight size={16} />
           </Link>
         </div>
-        <div className="news-grid">
+        <div className="featured-news">
           {newsLoading ? (
             <p>Loading news...</p>
-          ) : newsItems.length === 0 ? (
+          ) : newsItems.length === 0 || !featuredNews ? (
             <p>No news available at the moment.</p>
           ) : (
-            newsItems.map((item) => (
-              <article key={item.id} className="news-card">
-                {item.image?.url ? (
-                  <img src={item.image.url} alt={item.title} className="news-thumbnail" />
-                ) : (
-                  <div className="news-thumbnail-placeholder">
-                    <ImageIcon size={36} />
-                  </div>
-                )}
-                <div className="news-date">
-                  <Calendar size={14} />
-                  <span>{item.date}</span>
+            <>
+              <article className="featured-news-card">
+                <div className="featured-news-media">
+                  {featuredNews.image?.url ? (
+                    <img
+                      src={featuredNews.image.url}
+                      alt={featuredNews.title}
+                      className="featured-news-image"
+                    />
+                  ) : (
+                    <div className="featured-news-placeholder">
+                      <ImageIcon size={48} />
+                    </div>
+                  )}
                 </div>
-                <h3>{item.title}</h3>
-                <p>{getNewsExcerpt(item)}</p>
+                <div className="featured-news-body">
+                  <div className="featured-news-meta">
+                    <span className="featured-pill">Featured</span>
+                    <span className="featured-date">
+                      <Calendar size={14} />
+                      {featuredNews.date}
+                    </span>
+                  </div>
+                  <h3>{featuredNews.title}</h3>
+                  <p>{getNewsExcerpt(featuredNews, 190)}</p>
+                  <Link to={`/news#${featuredNews.id}`} className="featured-cta">
+                    Read Full Story <ArrowRight size={16} />
+                  </Link>
+                </div>
               </article>
-            ))
+              {featuredDots.length > 1 && (
+                <div className="featured-dots" aria-hidden="true">
+                  {featuredDots.map((_, index) => (
+                    <span
+                      key={`featured-dot-${index}`}
+                      className={`featured-dot ${index === 0 ? 'active' : ''}`}
+                    />
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
