@@ -46,15 +46,58 @@
 ## Step 6: Configure Firestore Security Rules
 
 1. In Firestore Database, click on the "Rules" tab
-2. Replace the rules with the following (we'll customize later):
+2. Replace the rules with the following:
 
 ```
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Only authenticated admins can read/write
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    match /announcements/{document} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    match /news/{document} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    match /gallery_images/{document} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    match /staff/{document} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    match /events/{document} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    match /capstone_projects/{document} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    match /contact_messages/{document} {
+      allow create: if true;
+      allow read, update, delete: if isSignedIn();
+    }
+
+    match /event_registrations/{document} {
+      allow create: if true;
+      allow read, update, delete: if isSignedIn();
+    }
+
     match /{document=**} {
-      allow read, write: if request.auth != null;
+      allow read, write: if false;
     }
   }
 }

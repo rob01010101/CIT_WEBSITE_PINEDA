@@ -9,7 +9,7 @@ import './Announcements.css';
 const ITEMS_PER_PAGE = 10;
 
 const CATEGORY_LABELS: Record<News['category'], string> = {
-  announcement: 'Announcements',
+  announcement: 'Achievements',
   event: 'Events',
   activity: 'Activities',
   partnership: 'Partnerships',
